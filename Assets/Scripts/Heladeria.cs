@@ -7,8 +7,11 @@ public class Heladeria : MonoBehaviour
     public string gusto;
     public int gramos;
 
-    float descuento = 0.1f;
-    int precioPorKilo = 500;
+    float Descuento = 0.1f;
+    int PrecioPorKilo = 500;
+    int MinimoDegGramos = 250;
+    int MaximoDegGramos = 500;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,15 +20,15 @@ public class Heladeria : MonoBehaviour
             Debug.Log("Debes ingresar un codigo valido (CHO, FRU, DDL).");
             return;
         }
-        if( gramos < 250 || gramos > 3000 ){
+        if( gramos < MinimoDegGramos || gramos > MaximoDegGramos ){
             Debug.Log("Debes pedir como minimo 250 gramos y como maximo 3000.");
             return;
         }
 
-        float precioPorGramo = (precioPorKilo / 1000f);
+        float precioPorGramo = (PrecioPorKilo / 1000f);
         float precioFinal = precioPorGramo * gramos;
         if(gusto == "FRU"){
-            precioFinal = precioFinal * (1 - descuento);
+            precioFinal = precioFinal * (1 - Descuento);
         }
 
         Debug.Log("Por el gusto: " + gusto + " deberas abonar: " + precioFinal);
